@@ -32,21 +32,16 @@ if os.path.exists("config.json"):
 #    print(" [ERROR] Modify the config.")
 #    sys.exit(0)
 
-#reddit = praw.Reddit(client_id = ("%s" % prawcfg['client_id']),
-#                     client_secret = ("%s" % prawcfg['client_secret']),
-#                     user_agent = ("%s" % prawcfg['user_agent']))
-
 reddit = praw.Reddit(client_id = prawcfg['client_id'],
                      client_secret = prawcfg['client_secret'],
                      user_agent = prawcfg['user_agent'])
-while True:
-    for i in range(25):
-        i = i + 1
-        for submission in reddit.subreddit('random').hot(limit=1):
-            if re.match(reg_image, submission.url):
-                print(submission.url)
-                #takeurl = submission.url
-                #flask_export(takeurl)
+for i in range(25):
+    i = i + 1
+    for submission in reddit.subreddit('random').hot(limit=1):
+        if re.match(reg_image, submission.url):
+            print(i, submission.url)
+            #takeurl = submission.url
+            #flask_export(takeurl)
 
 #app = Flask(__name__)
 #
