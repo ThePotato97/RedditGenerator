@@ -3,6 +3,7 @@ import json
 import os
 import sys
 import re
+import urllib.request
 from flask import Flask
 
 reg_image = r"(https://)(i\.redd\.it|imgur\.com)(/[a-z0-9]{1,})(\.jpg|\.png)"
@@ -35,6 +36,8 @@ for i in range(25):
     for submission in reddit.subreddit('random').hot(limit=1):
         if re.match(reg_image, submission.url):
             print(i, submission.url)
+            filename = submission.url[submission.url.rfind("/")+1:]
+            urllib.request.urlretrieve(submission.url, filename)
             #takeurl = submission.url
             #flask_export(takeurl)
 
