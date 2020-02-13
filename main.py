@@ -23,7 +23,7 @@ if os.path.exists("config.json"):
 # Can't think of a way to check if values are "None"
 print(" [DEBUG] cfg len:", len(prawcfg['client_id']), len(prawcfg['client_secret']), len(prawcfg['user_agent']))
 
-if len(prawcfg['client_id']) or len(prawcfg['client_secret']) or len(prawcfg['user_agent']) == 0:
+if len(prawcfg['client_id']) == 0 or len(prawcfg['client_secret']) == 0 or len(prawcfg['user_agent']) == 0:
     print(" [ERROR] Modify the config.")
     sys.exit(0)
 
